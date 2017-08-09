@@ -1,8 +1,14 @@
 package dados;
 
+
+import java.util.Iterator;
+
+import negocio.ColecaoCarros;
+import negocio.FordIterator;
+
 import principal.Carro;
 
-public class RepositorioFord {
+public class RepositorioFord extends FordIterator{
 	
 	//Atributos da classe RepositórioFord
 	private Carro[] carros;
@@ -15,17 +21,31 @@ public class RepositorioFord {
 		
 		this.carros = new Carro[TAMANHO];
 		this.indice = 0;
-		
 	}
 	
 	
 	//Métodos da classe RepositórioFord
 	
-	public void inserirCarroFord(String marca, String modelo, String ano, String placa){
+//	public Iterator criarNovoIterador(){
+//		
+//		Iterator fordIterator = new FordIterator(this.carros);
+//		
+//		return fordIterator;
+//		
+//	}
+	
+	public ColecaoCarros createIterator(){
 		
-		Carro carro = new Carro(marca, modelo, ano, placa);
+		return FordIterator(this.carros);
+		
+	}
+	
+	public void inserirCarroFord(String marca, String modelo, String ano, String placa, boolean usado){
+		
+		Carro carro = new Carro(marca, modelo, ano, placa, usado);
 		this.carros[indice] = carro;
 		this.indice = this.indice + 1;
+		//System.out.println("Carro Cadastrado com Sucesso !");
 		
 	}
 	
@@ -42,22 +62,14 @@ public class RepositorioFord {
 	}
 	
 	//Getters e Setters da classe RepositórioFord
-	public int getIndice(String placa){
+	public int getIndice(){
 		
-		int retorno = -1;
+		return this.indice;
 		
-		for(int i = 0; i < this.indice; i++){
-			
-			if(carros[i].getPlaca().equals(placa)){
-				
-				retorno = i;
-			}else{
-				
-				System.out.println("Placa não encontrada !");
-			}
-		}
-		
-		return retorno;
+	}
+	
+	public Carro[] getCarrosMatriz(){
+		return this.carros;
 	}
 	
 }

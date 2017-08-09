@@ -7,15 +7,17 @@ public class Carro {
 	private String modelo;
 	private String ano;
 	private String placa;
+	private boolean usado;
 
 	
 	//Contrutor da classe Carro
-	public Carro(String marca, String modelo, String ano, String placa){
+	public Carro(String marca, String modelo, String ano, String placa, boolean usado){
 		
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
 		this.placa = placa;
+		this.usado = usado;
 		
 	}
 
@@ -53,6 +55,12 @@ public class Carro {
 		this.placa = placa;
 	}
 	
+	public boolean getUsado(){
+		return usado;
+	}
 	
-
+	public void setUsado(boolean usado){
+		this.usado = usado;
+	}
+	
 }
